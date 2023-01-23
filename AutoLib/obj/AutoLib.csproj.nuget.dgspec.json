@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Clement\\Documents\\inge\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj": {}
+    "C:\\Users\\WorkLab\\Documents\\Polytech\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Clement\\Documents\\inge\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj": {
+    "C:\\Users\\WorkLab\\Documents\\Polytech\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Clement\\Documents\\inge\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj",
+        "projectUniqueName": "C:\\Users\\WorkLab\\Documents\\Polytech\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj",
         "projectName": "AutoLib",
-        "projectPath": "C:\\Users\\Clement\\Documents\\inge\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj",
-        "packagesPath": "C:\\Users\\Clement\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Clement\\Documents\\inge\\ISI\\AutoLib\\AutoLib\\obj\\",
+        "projectPath": "C:\\Users\\WorkLab\\Documents\\Polytech\\ISI\\AutoLib\\AutoLib\\AutoLib.csproj",
+        "packagesPath": "C:\\Users\\WorkLab\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\WorkLab\\Documents\\Polytech\\ISI\\AutoLib\\AutoLib\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Clement\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\WorkLab\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,8 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -45,9 +41,19 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql.Design": {
+              "target": "Package",
+              "version": "[1.1.2, )"
             }
           },
           "imports": [
@@ -69,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
