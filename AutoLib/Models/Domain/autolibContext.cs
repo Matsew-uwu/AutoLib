@@ -27,7 +27,6 @@ namespace AutoLib.Models.Domain
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySql("server=localhost;port=3306;user=userepul;password=epul;database=autolib", x => x.ServerVersion("10.4.25-mariadb"));
             }
         }
@@ -36,7 +35,7 @@ namespace AutoLib.Models.Domain
         {
             modelBuilder.Entity<Borne>(entity =>
             {
-                entity.HasKey(e => e.IdBorne)
+                entity.HasKey(e => e.IdBorne)   
                     .HasName("PRIMARY");
 
                 entity.ToTable("borne");

@@ -26,6 +26,15 @@ namespace AutoLib
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<autolibContext>(options =>
+                       options.UseMySql(Configuration.GetConnectionString("ConnectionString")));
+
+            services.AddSession(options =>
+            {
+                // Set session timeout value
+                options.IdleTimeout = TimeSpan.FromSeconds(30);
+                options.Cookie.HttpOnly = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
