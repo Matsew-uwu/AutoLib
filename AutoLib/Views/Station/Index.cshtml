@@ -1,0 +1,10 @@
+﻿@model IEnumerable<AutoLib.Models.Domain.Station>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index for Station</h1>
+
+@foreach (var obj in Model){
+    <p>@obj.IdStation @obj.Latitude, @obj.Longitude</p>
+}

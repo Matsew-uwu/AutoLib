@@ -27,7 +27,7 @@ namespace AutoLib
         {
             services.AddControllersWithViews();
             services.AddDbContext<autolibContext>(options =>
-                       options.UseMySql(Configuration.GetConnectionString("ConnectionString")));
+                       options.UseMySql(Configuration.GetConnectionString("MysqlString")));
 
             services.AddSession(options =>
             {
