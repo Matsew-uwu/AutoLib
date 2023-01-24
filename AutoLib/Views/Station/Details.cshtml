@@ -1,0 +1,36 @@
+﻿@using AutoLib.Models.Domain
+@{
+    ViewData["Title"] = "Details";
+
+    IEnumerable<Borne> bornes = ViewData["bornes"] as IEnumerable<AutoLib.Models.Domain.Borne>;
+}
+
+<h1>Station : @ViewData["station"]</h1>
+
+<h2 class="text-center text-secondary">Choisissez votre véhicule</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numéro de borne</th>
+            <th>Nom du véhicule</th>
+            <th>Catégorie</th>
+            <th>Niveau de batterie</th>
+            <th>Réserver</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var borne in bornes)
+        {
+            <tr>
+                <td>@borne.IdBorne</td>
+                <td>Porshe</td>
+                <td>Berline</td>
+                <td>70%</td>
+                <td><button class="btn btn-primary">Réserver</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
