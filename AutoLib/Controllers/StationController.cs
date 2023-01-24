@@ -18,5 +18,11 @@ namespace AutoLib.Controllers
             IEnumerable<Station> stationsList = _dbContext.Station;
             return View(stationsList);
         }
+
+        [HttpGet]
+        public IActionResult Map() { 
+            var stations = _dbContext.Station;
+            return Json(stations);
+        }
     }
 }
