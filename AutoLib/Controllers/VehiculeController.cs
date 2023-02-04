@@ -17,10 +17,16 @@ namespace AutoLib.Controllers
         }
 
         [HttpGet]
-        public IActionResult get(int id)
+        public IActionResult Get(int id)
         {
             var vehicule = _dbContext.Vehicule.Find(id);
             return Json(vehicule);
+        }
+
+        public Vehicule GetVehicule(int id)
+        {
+            Vehicule vehicule = _dbContext.Vehicule.Find(id);
+            return vehicule;
         }
     }
 }

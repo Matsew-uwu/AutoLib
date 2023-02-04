@@ -1,8 +1,13 @@
 ﻿@using AutoLib.Models.Domain
+@using AutoLib.Controllers
 @{
     ViewData["Title"] = "Details";
 
     IEnumerable<Borne> bornes = ViewData["bornes"] as IEnumerable<AutoLib.Models.Domain.Borne>;
+
+    autolibContext autolibContext = new autolibContext();
+    VehiculeController vehiculeController = new VehiculeController(autolibContext);
+    TypeVehiculeController typeVehiculeController = new TypeVehiculeController(autolibContext);
 }
 
 <h1>Station : @ViewData["station"]</h1>
@@ -22,13 +27,19 @@
     <tbody>
         @foreach (var borne in bornes)
         {
-            <tr>
-                <td>@borne.IdBorne</td>
-                <td>Porshe</td>
-                <td>Berline</td>
-                <td>70%</td>
-                <td><button class="btn btn-primary">Réserver</button></td>
-            </tr>
+            int? vehiculeId = @borne.IdVehicule;
+            if (vehiculeId != null)
+            {
+                Vehicule vehicule = vehiculeController.GetVehicule((int)vehiculeId);
+                TypeVehicule typeVehicule = typeVehiculeController.getTypeVehicule(vehicule.TypeVehicule);
+                <tr>
+                    <td>@borne.IdBorne</td>
+                    <td>@typeVehicule.TypeVehicule1</td>
+                    <td>@typeVehicule.Categorie</td>
+                    <td>@vehicule.EtatBatterie</td>
+                    <td><button class="btn btn-primary">Réserver</button></td>
+                </tr>
+            }
         }
     </tbody>
 </table>

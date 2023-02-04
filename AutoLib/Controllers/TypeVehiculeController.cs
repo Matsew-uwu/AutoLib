@@ -22,5 +22,11 @@ namespace AutoLib.Controllers
             var typeVehicule = _dbContext.TypeVehicule.Find(id);
             return Json(typeVehicule);
         }
+
+        public TypeVehicule getTypeVehicule(int id)
+        {
+            var typeVehicule = _dbContext.TypeVehicule.Find(id);
+            return typeVehicule;
+        }
     }
 }

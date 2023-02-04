@@ -20,7 +20,7 @@ const setMarkers = (map, stations) => {
         // Options
         let containerPopup = `<h1 class="h6">Station</h1>
              <p>${station.adresse}</p>
-             <p class="text-secondary">Voiture disponible : <a href="/Station/Details/${station.IdStation}", title="Consulter">${station.numero}</a> </p>`
+             <p class="text-secondary">Voiture disponible : <a href="/Station/Details/${station.idStation}", title="Consulter">${station.numero}</a> </p>`
         let popup = L.popup().setContent(containerPopup);
 
         let marker = L.marker([station.latitude, station.longitude])
@@ -43,6 +43,7 @@ const map = async () => {
     }).addTo(map);
 
     let stations = await getStations();
+    console.log(stations);
     setMarkers(map, stations);
 }
 
