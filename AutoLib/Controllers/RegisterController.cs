@@ -6,6 +6,7 @@ using WebMangaEntity.Models.Utilitaires;
 using System;
 using Microsoft.AspNetCore.DataProtection;
 using System.Net.Sockets;
+using Microsoft.AspNetCore.Http;
 
 namespace AutoLib.Controllers
 {
@@ -20,12 +21,23 @@ namespace AutoLib.Controllers
 
         public IActionResult Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
+            {
+                // l'utilisateur est authentifié, il peut accéder à la ressource protégée
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(RegisterModel model)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
+            {
+                // l'utilisateur est authentifié, il peut accéder à la ressource protégée
+                return RedirectToAction("Index", "Home");
+            }
+
             if (ModelState.IsValid)
             {
                 // Enregistrer les données en utilisant une base de données ou un autre mécanisme de stockage

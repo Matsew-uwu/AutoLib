@@ -81,7 +81,7 @@ namespace WebMangaEntity.Models.Utilitaires
         ///  Cette méthode transforme une chaîne de caractère en bytes
         /// </summary>
 
-        public static byte[] transformeEnBytes(string maChaine)
+        public static byte[] StringToBytes(string maChaine)
         {
             byte[] bytes = Convert.FromBase64String(maChaine);
 

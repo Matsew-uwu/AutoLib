@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity;
 
 
 
+
 namespace AutoLib
 {
     public class Startup
@@ -33,15 +34,17 @@ namespace AutoLib
             services.AddDbContext<autolibContext>(options =>
                        options.UseMySql(Configuration.GetConnectionString("MysqlString")));
 
-            
+            services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
                 // Set session timeout value
                 options.IdleTimeout = TimeSpan.FromSeconds(30);
                 options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
             });
 
-            
+            services.AddHttpContextAccessor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,9 +65,6 @@ namespace AutoLib
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseSession();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
