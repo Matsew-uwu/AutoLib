@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace AutoLib.Models
 {
@@ -12,10 +14,10 @@ namespace AutoLib.Models
         [Display(Name = "Nom")]
         public string Lastname { get; set; }
 
+        // Date input
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Date de naissance")]
+        public DateTime? DateNaissance { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
