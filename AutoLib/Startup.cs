@@ -10,6 +10,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AutoLib.Models.Domain;
+using Microsoft.AspNetCore.Identity;
+
+
+
 
 namespace AutoLib
 {
@@ -29,12 +33,15 @@ namespace AutoLib
             services.AddDbContext<autolibContext>(options =>
                        options.UseMySql(Configuration.GetConnectionString("MysqlString")));
 
+            
             services.AddSession(options =>
             {
                 // Set session timeout value
                 options.IdleTimeout = TimeSpan.FromSeconds(30);
                 options.Cookie.HttpOnly = true;
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,9 +60,10 @@ namespace AutoLib
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
-
             app.UseRouting();
+            app.UseSession();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

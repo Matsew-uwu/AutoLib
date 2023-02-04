@@ -139,3 +139,4 @@ C:\Users\WorkLab\Documents\Polytech\ISI\AutoLib\AutoLib\obj\Debug\netcoreapp3.1\
 C:\Users\WorkLab\Documents\Polytech\ISI\AutoLib\AutoLib\obj\Debug\netcoreapp3.1\Razor\Views\Station\Index.cshtml.g.cs
 C:\Users\WorkLab\Documents\Polytech\ISI\AutoLib\AutoLib\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Index.cshtml.g.cs
 C:\Users\WorkLab\Documents\Polytech\ISI\AutoLib\AutoLib\obj\Debug\netcoreapp3.1\Razor\Views\Station\Details.cshtml.g.cs
+C:\Users\WorkLab\Documents\Polytech\ISI\AutoLib\AutoLib\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
