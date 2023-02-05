@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis;
 using System;
 using AutoLib.Models.Domain;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace AutoLib.Controllers
 {
@@ -52,6 +53,22 @@ namespace AutoLib.Controllers
                 _dbContext.Reservation.Add(reservation);
                 await _dbContext.SaveChangesAsync();
 
+                var vehicule = _dbContext.Vehicule.Find(vehiculeId);
+                if (vehicule != null)
+                {
+                    vehicule.Disponibilite = "NON DISPONIBLE";
+                    _dbContext.Vehicule.Update(vehicule);
+                    _dbContext.SaveChanges();
+                }
+/*
+                var borne = _dbContext.Borne.Where(s => s.IdVehicule == vehiculeId).FirstOrDefault();
+                if (borne != null)
+                {
+                    borne.IdVehicule = null;
+                    _dbContext.Borne.Update(borne);
+                    _dbContext.SaveChanges();
+                }*/
+                
                 return RedirectToAction("Reservations", "Client");
             }
             catch
