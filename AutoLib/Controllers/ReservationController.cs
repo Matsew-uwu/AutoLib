@@ -53,6 +53,7 @@ namespace AutoLib.Controllers
                 _dbContext.Reservation.Add(reservation);
                 await _dbContext.SaveChangesAsync();
 
+                //mise à jour de la disponibilité du véhicule
                 var vehicule = _dbContext.Vehicule.Find(vehiculeId);
                 if (vehicule != null)
                 {
@@ -61,6 +62,7 @@ namespace AutoLib.Controllers
                     _dbContext.SaveChanges();
                 }
 /*
+                //mise à jour de la borne
                 var borne = _dbContext.Borne.Where(s => s.IdVehicule == vehiculeId).FirstOrDefault();
                 if (borne != null)
                 {
