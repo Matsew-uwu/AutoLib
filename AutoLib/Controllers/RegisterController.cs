@@ -21,9 +21,10 @@ namespace AutoLib.Controllers
 
         public IActionResult Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
+            ViewData["_Session"] = HttpContext.Session;
+
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
             {
-                // l'utilisateur est authentifié, il peut accéder à la ressource protégée
                 return RedirectToAction("Index", "Home");
             }
             return View();
@@ -32,15 +33,16 @@ namespace AutoLib.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(RegisterModel model)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
+            ViewData["_Session"] = HttpContext.Session;
+
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
             {
-                // l'utilisateur est authentifié, il peut accéder à la ressource protégée
                 return RedirectToAction("Index", "Home");
             }
 
             if (ModelState.IsValid)
             {
-                // Enregistrer les données en utilisant une base de données ou un autre mécanisme de stockage
+                // Enregistrer les données en utilisant une base de données
 
                 // Hash le mot de passe
                 Byte[] selmdp = PasswordHash.GenerateSalt();
@@ -67,6 +69,7 @@ namespace AutoLib.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
+            
             return View(model);
         }
     }

@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using AutoLib.Models.Domain
+@using AutoLib.Controllers
+@model AutoLib.Models.Domain.Reservation
+@{
+    ViewData["Title"] = "Reservations";
+    IEnumerable<Reservation> reservations = ViewData["Reservations"] as IEnumerable<AutoLib.Models.Domain.Reservation>;
+    autolibContext autolibContext = new autolibContext();
+    VehiculeController vehiculeController = new VehiculeController(autolibContext);
+    TypeVehiculeController typeVehiculeController = new TypeVehiculeController(autolibContext);
+}
+
+<h1 class="text-center">Vos Reservations</h1>
+
+<!-- Conteneur pour la table -->
+<div class="container table-container">
+    <table class="table">
+        <!-- En-tête de la table -->
+        <thead>
+            <tr>
+                <th>Nom du véhicule</th>
+                <th>Type de véhicule</th>
+                <th>Date de réservation</th>
+                <th>Date échéance</th>
+            </tr>
+        </thead>
+        <!-- Corps de la table -->
+        <tbody>
+            <!-- Ligne de données 1 -->
+            @foreach (var reservation in reservations)
+            {
+                Vehicule vehicule = vehiculeController.GetVehicule(reservation.Vehicule);
+                TypeVehicule typeVehicule = typeVehiculeController.getTypeVehicule(vehicule.TypeVehicule);
+                DateTime dated = reservation.DateReservation;
+                DateTime datef = (DateTime) reservation.DateEcheance;
+                <tr>
+                    <td>@typeVehicule.TypeVehicule1</td>
+                    <td>@typeVehicule.Categorie</td>
+                   <td>@dated.ToString("MM/dd/yyyy h:mm tt")</td>
+                    <td>@datef.ToString("MM/dd/yyyy h:mm tt")</td>
+                </tr>
+            }            
+        </tbody>
+    </table>
+</div>

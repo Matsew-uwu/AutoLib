@@ -19,21 +19,22 @@ namespace AutoLib.Controllers
 
         public IActionResult Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
+            ViewData["_Session"] = HttpContext.Session;
+
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
             {
-                // l'utilisateur est authentifié, il peut accéder à la ressource protégée
                 return RedirectToAction("Index", "Home");
             }
-
             return View();
         }
 
         [HttpPost]
         public IActionResult Index(LoginModel model)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
+            ViewData["_Session"] = HttpContext.Session;
+            
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Firstname")))
             {
-                // l'utilisateur est authentifié, il peut accéder à la ressource protégée
                 return RedirectToAction("Index", "Home");
             }
 

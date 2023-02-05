@@ -13,6 +13,8 @@ namespace AutoLib.Controllers
         }
         public IActionResult Index()
         {
+            ViewData["_Session"] = HttpContext.Session;
+
             return View();
         }
 

@@ -20,17 +20,23 @@ namespace AutoLib.Controllers
 
         public IActionResult Index()
         { 
+            ViewData["_Session"] = HttpContext.Session;
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            ViewData["_Session"] = HttpContext.Session;
+
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            ViewData["_Session"] = HttpContext.Session;
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

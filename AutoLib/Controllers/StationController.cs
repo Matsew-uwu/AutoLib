@@ -16,12 +16,16 @@ namespace AutoLib.Controllers
 
         public IActionResult Index()
         {
+            ViewData["_Session"] = HttpContext.Session;
+
             IEnumerable<Station> stationsList = _dbContext.Station;
             return View(stationsList);
         }
 
         public IActionResult Details(int id)
         {
+            ViewData["_Session"] = HttpContext.Session;
+
             ViewData["bornes"] = _dbContext.Borne.Where(b => b.Station == id);
             ViewData["station"] = _dbContext.Station.Find(id);
             return View();
@@ -29,6 +33,7 @@ namespace AutoLib.Controllers
 
         [HttpGet]
         public IActionResult Map() { 
+
             var stations = _dbContext.Station;
             return Json(stations);
         }
